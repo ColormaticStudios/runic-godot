@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://ikvaekbnft70"]
+
+[ext_resource type="Texture2D" uid="uid://ttb1b3k07qu5" path="res://textures/world/biome/forest/boulder.svg" id="1_474a4"]
+
+[sub_resource type="GDScript" id="GDScript_d7f4g"]
+script/source = "extends StaticBody2D
+
+
+var type = \"resource\"
+var resource_type = \"stone\"
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fb1fv"]
+radius = 64.0
+
+[node name="stone" type="StaticBody2D"]
+script = SubResource("GDScript_d7f4g")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_fb1fv")
+
+[node name="body" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_474a4")

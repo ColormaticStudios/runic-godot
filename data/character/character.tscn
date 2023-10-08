@@ -1,0 +1,175 @@
+[gd_scene load_steps=12 format=3 uid="uid://4dsm0l7s6vki"]
+
+[ext_resource type="Texture2D" uid="uid://gfxfxkfu8uk4" path="res://textures/character/character.svg" id="1_f7cgp"]
+[ext_resource type="Script" path="res://data/character/character.gd" id="1_qlitf"]
+[ext_resource type="Script" path="res://data/character/hud.gd" id="3_eogh2"]
+[ext_resource type="Texture2D" uid="uid://ttb1b3k07qu5" path="res://textures/world/biome/forest/boulder.svg" id="4_l3xyh"]
+[ext_resource type="Texture2D" uid="uid://i7fjjduk8b0c" path="res://textures/world/biome/forest/tree.svg" id="5_j15j3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_653al"]
+radius = 36.0
+
+[sub_resource type="Animation" id="Animation_gkjmi"]
+resource_name = "hit"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("body_pivot/body:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.13446, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_se06j"]
+_data = {
+"hit": SubResource("Animation_gkjmi")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5s1x0"]
+bg_color = Color(0.184314, 0.184314, 0.184314, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csph4"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31scb"]
+bg_color = Color(0, 1, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="character" type="CharacterBody2D"]
+script = ExtResource("1_qlitf")
+
+[node name="camera" type="Camera2D" parent="."]
+
+[node name="collision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_653al")
+
+[node name="animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_se06j")
+}
+
+[node name="body_pivot" type="Node2D" parent="."]
+
+[node name="raycast" type="RayCast2D" parent="body_pivot"]
+target_position = Vector2(0, -100)
+
+[node name="body" type="Sprite2D" parent="body_pivot"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_f7cgp")
+
+[node name="hud" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -432.0
+offset_top = -256.0
+offset_right = 464.0
+offset_bottom = 272.0
+script = ExtResource("3_eogh2")
+
+[node name="bars" type="Panel" parent="hud"]
+layout_mode = 1
+offset_right = 368.0
+offset_bottom = 56.0
+
+[node name="health" type="ProgressBar" parent="hud/bars"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 360.0
+offset_bottom = 16.0
+theme_override_styles/background = SubResource("StyleBoxFlat_5s1x0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_csph4")
+value = 100.0
+show_percentage = false
+
+[node name="stamina" type="ProgressBar" parent="hud/bars"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 40.0
+offset_right = 360.0
+offset_bottom = 48.0
+theme_override_styles/background = SubResource("StyleBoxFlat_5s1x0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_31scb")
+value = 100.0
+show_percentage = false
+
+[node name="name" type="Panel" parent="hud"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -104.0
+offset_bottom = 32.0
+grow_horizontal = 0
+
+[node name="username" type="Label" parent="hud/name"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Username"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="inventory" type="Panel" parent="hud"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -88.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="stone_image" type="Sprite2D" parent="hud/inventory"]
+position = Vector2(24, 24)
+scale = Vector2(0.0457143, 0.0457143)
+texture = ExtResource("4_l3xyh")
+
+[node name="stone_label" type="Label" parent="hud/inventory"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 8.0
+offset_right = 88.0
+offset_bottom = 40.0
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+clip_text = true
+
+[node name="wood_image" type="Sprite2D" parent="hud/inventory"]
+position = Vector2(24, 64)
+scale = Vector2(0.0457143, 0.0457143)
+texture = ExtResource("5_j15j3")
+
+[node name="wood_label" type="Label" parent="hud/inventory"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 48.0
+offset_right = 88.0
+offset_bottom = 80.0
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+clip_text = true
