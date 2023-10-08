@@ -31,6 +31,7 @@ func _process(delta):
 				var hit_object = $body_pivot/raycast.get_collider()
 				if hit_object.type == "resource":
 					inventory[hit_object.resource_type] += 1
+					hit_object.get_node("animation").play("hit")
 	
 	#update inventory HUD
 	$hud/inventory/stone_label.text = str(inventory.stone)
