@@ -77,7 +77,6 @@ texture = ExtResource("1_f7cgp")
 
 [node name="tool" type="Sprite2D" parent="body_pivot/body"]
 z_index = -1
-position = Vector2(-80, -120)
 texture = ExtResource("3_c34pt")
 
 [node name="hud" type="Control" parent="."]

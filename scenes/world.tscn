@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://deus4t8mmx6pp"]
 
-[ext_resource type="Script" path="res://script/world.gd" id="1_fj2dk"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_d5cpg"]
 [ext_resource type="PackedScene" uid="uid://4dsm0l7s6vki" path="res://data/character/character.tscn" id="1_gadv2"]
 [ext_resource type="Texture2D" uid="uid://vyhureoc5qlp" path="res://textures/world/biome/forest/grass.svg" id="2_xtc31"]
 
@@ -20,7 +20,7 @@ normal = Vector2(1, 0)
 distance = -3000.0
 
 [node name="world" type="Node2D"]
-script = ExtResource("1_fj2dk")
+script = ExtResource("1_d5cpg")
 
 [node name="character" parent="." instance=ExtResource("1_gadv2")]
 
