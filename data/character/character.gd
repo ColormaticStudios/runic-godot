@@ -14,7 +14,16 @@ var status = {
 	"health": 100,
 	"stamina": 100
 }
+var current_tool = "none"
 
+
+func change_tool(tool):
+	current_tool = tool
+	$body_pivot/body/tool.texture = load(game_data.tools[tool].image)
+	$body_pivot/body/tool.position = game_data.tools[tool].offset
+
+func _ready():
+	change_tool("stick")
 
 func _physics_process(delta):
 	var pre_velocity = Vector2(0, 0)
