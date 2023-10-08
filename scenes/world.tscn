@@ -1,26 +1,26 @@
-[gd_scene load_steps=9 format=3 uid="uid://deus4t8mmx6pp"]
+[gd_scene load_steps=8 format=3 uid="uid://deus4t8mmx6pp"]
 
+[ext_resource type="Script" path="res://script/world.gd" id="1_fj2dk"]
 [ext_resource type="PackedScene" uid="uid://4dsm0l7s6vki" path="res://data/character/character.tscn" id="1_gadv2"]
 [ext_resource type="Texture2D" uid="uid://vyhureoc5qlp" path="res://textures/world/biome/forest/grass.svg" id="2_xtc31"]
-[ext_resource type="PackedScene" uid="uid://ikvaekbnft70" path="res://data/objects/stone.tscn" id="3_l3ue5"]
-[ext_resource type="PackedScene" uid="uid://c7ir6imnqx4py" path="res://data/objects/tree.tscn" id="4_qpvcg"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0fcbb"]
 normal = Vector2(0, 1)
-distance = -2000.0
+distance = -3000.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cl8ds"]
 normal = Vector2(-1, 0)
-distance = -2000.0
+distance = -3000.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5jryn"]
-distance = -2000.0
+distance = -3000.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j3vu4"]
 normal = Vector2(1, 0)
-distance = -2000.0
+distance = -3000.0
 
 [node name="world" type="Node2D"]
+script = ExtResource("1_fj2dk")
 
 [node name="character" parent="." instance=ExtResource("1_gadv2")]
 
@@ -31,15 +31,9 @@ z_index = -10
 texture_repeat = 2
 texture = ExtResource("2_xtc31")
 region_enabled = true
-region_rect = Rect2(0, 0, 4000, 4000)
+region_rect = Rect2(0, 0, 8000, 8000)
 
 [node name="objects" type="Node2D" parent="."]
-
-[node name="stone" parent="objects" instance=ExtResource("3_l3ue5")]
-position = Vector2(-128, -64)
-
-[node name="tree" parent="objects" instance=ExtResource("4_qpvcg")]
-position = Vector2(168, -152)
 
 [node name="world_boundaries" type="StaticBody2D" parent="."]
 
