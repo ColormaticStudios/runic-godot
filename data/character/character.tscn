@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://4dsm0l7s6vki"]
+[gd_scene load_steps=13 format=3 uid="uid://4dsm0l7s6vki"]
 
 [ext_resource type="Texture2D" uid="uid://gfxfxkfu8uk4" path="res://textures/character/character.svg" id="1_f7cgp"]
 [ext_resource type="Script" path="res://data/character/character.gd" id="1_qlitf"]
+[ext_resource type="Texture2D" uid="uid://b7hh5vuwdmg0v" path="res://textures/tools/stick.svg" id="3_1h5n2"]
 [ext_resource type="Script" path="res://data/character/hud.gd" id="3_eogh2"]
-[ext_resource type="Texture2D" uid="uid://ttb1b3k07qu5" path="res://textures/world/biome/forest/boulder.svg" id="4_l3xyh"]
+[ext_resource type="Texture2D" uid="uid://ttb1b3k07qu5" path="res://textures/world/boulder.svg" id="4_t4sgq"]
 [ext_resource type="Texture2D" uid="uid://i7fjjduk8b0c" path="res://textures/world/biome/forest/tree.svg" id="5_j15j3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_653al"]
@@ -74,7 +75,13 @@ target_position = Vector2(0, -100)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_f7cgp")
 
+[node name="tool" type="Sprite2D" parent="body_pivot/body"]
+z_index = -1
+position = Vector2(-80, -120)
+texture = ExtResource("3_1h5n2")
+
 [node name="hud" type="Control" parent="."]
+z_index = 10
 layout_mode = 3
 anchors_preset = 0
 offset_left = -432.0
@@ -145,7 +152,7 @@ grow_vertical = 0
 [node name="stone_image" type="Sprite2D" parent="hud/inventory"]
 position = Vector2(24, 24)
 scale = Vector2(0.0457143, 0.0457143)
-texture = ExtResource("4_l3xyh")
+texture = ExtResource("4_t4sgq")
 
 [node name="stone_label" type="Label" parent="hud/inventory"]
 layout_mode = 0
