@@ -35,6 +35,7 @@ _data = {
 }
 
 [node name="tree" type="StaticBody2D"]
+collision_layer = 3
 script = SubResource("GDScript_si3d7")
 
 [node name="collision" type="CollisionShape2D" parent="."]

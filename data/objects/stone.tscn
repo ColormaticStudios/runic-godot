@@ -35,6 +35,7 @@ _data = {
 }
 
 [node name="stone" type="StaticBody2D"]
+collision_layer = 3
 script = SubResource("GDScript_d7f4g")
 
 [node name="collision" type="CollisionShape2D" parent="."]
