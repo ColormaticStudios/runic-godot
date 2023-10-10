@@ -1,11 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://4dsm0l7s6vki"]
+[gd_scene load_steps=8 format=3 uid="uid://4dsm0l7s6vki"]
 
 [ext_resource type="Texture2D" uid="uid://gfxfxkfu8uk4" path="res://textures/character/character.svg" id="1_f7cgp"]
 [ext_resource type="Script" path="res://data/character/character.gd" id="1_qlitf"]
 [ext_resource type="Texture2D" uid="uid://crw5j541ciab8" path="res://textures/tools/none.svg" id="3_c34pt"]
-[ext_resource type="Script" path="res://data/character/hud.gd" id="3_eogh2"]
-[ext_resource type="Texture2D" uid="uid://ttb1b3k07qu5" path="res://textures/world/boulder.svg" id="4_t4sgq"]
-[ext_resource type="Texture2D" uid="uid://i7fjjduk8b0c" path="res://textures/world/biome/forest/tree.svg" id="5_j15j3"]
+[ext_resource type="PackedScene" uid="uid://vaapoj5q16ko" path="res://data/character/hud.tscn" id="4_vgn11"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_653al"]
 radius = 36.0
@@ -30,44 +28,6 @@ tracks/0/keys = {
 _data = {
 "hit": SubResource("Animation_gkjmi")
 }
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tb4rh"]
-bg_color = Color(0, 0, 0, 0.392157)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="Theme" id="Theme_h3iw6"]
-Panel/styles/panel = SubResource("StyleBoxFlat_tb4rh")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5s1x0"]
-bg_color = Color(0.184314, 0.184314, 0.184314, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csph4"]
-bg_color = Color(1, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31scb"]
-bg_color = Color(0, 1, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1p646"]
-bg_color = Color(0, 0.698039, 1, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 
 [node name="character" type="CharacterBody2D"]
 collision_layer = 3
@@ -98,145 +58,4 @@ texture = ExtResource("1_f7cgp")
 z_index = -1
 texture = ExtResource("3_c34pt")
 
-[node name="hud" type="Control" parent="."]
-z_index = 10
-layout_mode = 3
-anchors_preset = 0
-offset_left = -512.0
-offset_top = -256.0
-offset_right = 512.0
-offset_bottom = 256.0
-theme = SubResource("Theme_h3iw6")
-script = ExtResource("3_eogh2")
-
-[node name="bars" type="Panel" parent="hud"]
-layout_mode = 1
-offset_right = 368.0
-offset_bottom = 56.0
-
-[node name="health" type="ProgressBar" parent="hud/bars"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 360.0
-offset_bottom = 16.0
-theme_override_styles/background = SubResource("StyleBoxFlat_5s1x0")
-theme_override_styles/fill = SubResource("StyleBoxFlat_csph4")
-value = 100.0
-show_percentage = false
-
-[node name="stamina" type="ProgressBar" parent="hud/bars"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 40.0
-offset_right = 360.0
-offset_bottom = 48.0
-theme_override_styles/background = SubResource("StyleBoxFlat_5s1x0")
-theme_override_styles/fill = SubResource("StyleBoxFlat_31scb")
-value = 100.0
-show_percentage = false
-
-[node name="name" type="Panel" parent="hud"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -104.0
-offset_bottom = 32.0
-grow_horizontal = 0
-
-[node name="username" type="Label" parent="hud/name"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Username"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="inventory" type="Panel" parent="hud"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -96.0
-offset_top = -88.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="stone_image" type="Sprite2D" parent="hud/inventory"]
-position = Vector2(24, 24)
-scale = Vector2(0.0457143, 0.0457143)
-texture = ExtResource("4_t4sgq")
-
-[node name="stone_label" type="Label" parent="hud/inventory"]
-layout_mode = 0
-offset_left = 48.0
-offset_top = 8.0
-offset_right = 88.0
-offset_bottom = 40.0
-text = "0"
-horizontal_alignment = 2
-vertical_alignment = 1
-clip_text = true
-
-[node name="wood_image" type="Sprite2D" parent="hud/inventory"]
-position = Vector2(24, 64)
-scale = Vector2(0.0457143, 0.0457143)
-texture = ExtResource("5_j15j3")
-
-[node name="wood_label" type="Label" parent="hud/inventory"]
-layout_mode = 0
-offset_left = 48.0
-offset_top = 48.0
-offset_right = 88.0
-offset_bottom = 80.0
-text = "0"
-horizontal_alignment = 2
-vertical_alignment = 1
-clip_text = true
-
-[node name="level" type="Panel" parent="hud"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -192.0
-offset_top = -80.0
-offset_right = 192.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="level" type="Label" parent="hud/level"]
-layout_mode = 0
-offset_left = 8.0
-offset_right = 376.0
-offset_bottom = 26.0
-text = "Level 0"
-horizontal_alignment = 1
-clip_text = true
-
-[node name="level_bar" type="ProgressBar" parent="hud/level"]
-offset_left = 16.0
-offset_top = 32.0
-offset_right = 368.0
-offset_bottom = 40.0
-theme_override_styles/background = SubResource("StyleBoxFlat_5s1x0")
-theme_override_styles/fill = SubResource("StyleBoxFlat_1p646")
-show_percentage = false
-
-[node name="points" type="Label" parent="hud/level"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 48.0
-offset_right = 376.0
-offset_bottom = 74.0
-text = "0/100"
-horizontal_alignment = 1
-clip_text = true
+[node name="hud" parent="." instance=ExtResource("4_vgn11")]
