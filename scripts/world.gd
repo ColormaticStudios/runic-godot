@@ -17,4 +17,5 @@ func _ready():
 			var this_object = load(object).instantiate()
 			this_object.position.x = randf_range(-4000, 4000)
 			this_object.position.y = randf_range(-4000, 4000)
+			this_object.rotation_degrees = randf_range(0, 360)
 			$objects.add_child(this_object)
