@@ -11,7 +11,7 @@ var resource_type = \"wood\"
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fb1fv"]
-radius = 64.0
+radius = 56.0
 
 [sub_resource type="Animation" id="Animation_k7egg"]
 resource_name = "hit"
