@@ -47,8 +47,8 @@ func _process(delta):
 	$hud/inventory/wood_label.text = str(inventory.wood)
 	
 	#update status HUD
-	$hud/bars/health.value = int(lerp($hud/bars/health.value, float(status.health), 20*delta))
-	$hud/bars/stamina.value = int(lerp($hud/bars/stamina.value, float(status.stamina), 20*delta))
+	$hud/bars/health.value = status.health
+	$hud/bars/stamina.value = status.stamina
 
 func _input(event):
 	if event is InputEventMouseMotion:
