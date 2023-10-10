@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://4dsm0l7s6vki"]
+[gd_scene load_steps=16 format=3 uid="uid://4dsm0l7s6vki"]
 
 [ext_resource type="Texture2D" uid="uid://gfxfxkfu8uk4" path="res://textures/character/character.svg" id="1_f7cgp"]
 [ext_resource type="Script" path="res://data/character/character.gd" id="1_qlitf"]
@@ -31,6 +31,16 @@ _data = {
 "hit": SubResource("Animation_gkjmi")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tb4rh"]
+bg_color = Color(0, 0, 0, 0.392157)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="Theme" id="Theme_h3iw6"]
+Panel/styles/panel = SubResource("StyleBoxFlat_tb4rh")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5s1x0"]
 bg_color = Color(0.184314, 0.184314, 0.184314, 1)
 corner_radius_top_left = 10
@@ -47,6 +57,13 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31scb"]
 bg_color = Color(0, 1, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1p646"]
+bg_color = Color(0, 0.698039, 1, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -85,10 +102,11 @@ texture = ExtResource("3_c34pt")
 z_index = 10
 layout_mode = 3
 anchors_preset = 0
-offset_left = -432.0
+offset_left = -512.0
 offset_top = -256.0
-offset_right = 464.0
-offset_bottom = 272.0
+offset_right = 512.0
+offset_bottom = 256.0
+theme = SubResource("Theme_h3iw6")
 script = ExtResource("3_eogh2")
 
 [node name="bars" type="Panel" parent="hud"]
@@ -180,4 +198,45 @@ offset_bottom = 80.0
 text = "0"
 horizontal_alignment = 2
 vertical_alignment = 1
+clip_text = true
+
+[node name="level" type="Panel" parent="hud"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -80.0
+offset_right = 192.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="level" type="Label" parent="hud/level"]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 376.0
+offset_bottom = 26.0
+text = "Level 0"
+horizontal_alignment = 1
+clip_text = true
+
+[node name="level_bar" type="ProgressBar" parent="hud/level"]
+offset_left = 16.0
+offset_top = 32.0
+offset_right = 368.0
+offset_bottom = 40.0
+theme_override_styles/background = SubResource("StyleBoxFlat_5s1x0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1p646")
+show_percentage = false
+
+[node name="points" type="Label" parent="hud/level"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 376.0
+offset_bottom = 74.0
+text = "0/100"
+horizontal_alignment = 1
 clip_text = true
