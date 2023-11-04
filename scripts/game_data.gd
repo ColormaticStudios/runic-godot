@@ -9,5 +9,9 @@ var tools = {
 	"stick": {
 		"image": "res://textures/tools/stick.svg",
 		"offset": Vector2(-80, -120)
+	},
+	"stone_axe": {
+		"image": "res://textures/tools/stone_axe.svg",
+		"offset": Vector2(-80, -195)
 	}
 }

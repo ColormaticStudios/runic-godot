@@ -28,7 +28,7 @@ func change_tool(tool):
 	$body_pivot/body/tool.position = game_data.tools[tool].offset
 
 func _ready():
-	change_tool("stick")
+	change_tool("stick") #this is when the starting tool is set
 
 func _physics_process(delta):
 	var pre_velocity = Vector2(0, 0)
