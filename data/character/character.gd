@@ -64,6 +64,12 @@ func _process(delta):
 	if inventory.points >= (get_total_points_for_next_level()):
 		inventory.points -= get_total_points_for_next_level()
 		status.level += 1
+		level_up()
+
+
+func level_up():
+	if status.level in game_data.level_tools:
+		change_tool(game_data.level_tools[status.level])
 
 func _input(event):
 	if event is InputEventMouseMotion:

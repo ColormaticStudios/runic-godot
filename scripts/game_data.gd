@@ -15,3 +15,8 @@ var tools = {
 		"offset": Vector2(-80, -195)
 	}
 }
+
+var level_tools = {
+	1: "stick",
+	5: "stone_axe"
+}
