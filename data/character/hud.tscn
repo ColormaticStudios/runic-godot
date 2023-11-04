@@ -56,7 +56,7 @@ script = ExtResource("1_4ewah")
 [node name="bars" type="Panel" parent="."]
 layout_mode = 1
 offset_right = 368.0
-offset_bottom = 56.0
+offset_bottom = 48.0
 
 [node name="health" type="ProgressBar" parent="bars"]
 layout_mode = 0
@@ -72,9 +72,9 @@ show_percentage = false
 [node name="stamina" type="ProgressBar" parent="bars"]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 40.0
+offset_top = 32.0
 offset_right = 360.0
-offset_bottom = 48.0
+offset_bottom = 40.0
 theme_override_styles/background = SubResource("StyleBoxFlat_5s1x0")
 theme_override_styles/fill = SubResource("StyleBoxFlat_31scb")
 value = 100.0
@@ -164,6 +164,7 @@ offset_right = 376.0
 offset_bottom = 26.0
 text = "Level 0"
 horizontal_alignment = 1
+vertical_alignment = 1
 clip_text = true
 
 [node name="level_bar" type="ProgressBar" parent="level"]
@@ -184,4 +185,5 @@ offset_right = 376.0
 offset_bottom = 74.0
 text = "0/100"
 horizontal_alignment = 1
+vertical_alignment = 1
 clip_text = true
