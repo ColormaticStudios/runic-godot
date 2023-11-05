@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://deus4t8mmx6pp"]
+[gd_scene load_steps=9 format=3 uid="uid://deus4t8mmx6pp"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_d5cpg"]
 [ext_resource type="PackedScene" uid="uid://4dsm0l7s6vki" path="res://data/character/character.tscn" id="1_gadv2"]
 [ext_resource type="Texture2D" uid="uid://vyhureoc5qlp" path="res://textures/world/biome/forest/grass.svg" id="2_xtc31"]
+[ext_resource type="Texture2D" uid="uid://bs880ox7qmqui" path="res://textures/world/biome/desert/sand.svg" id="4_gronf"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0fcbb"]
 normal = Vector2(0, 1)
@@ -13,7 +14,7 @@ normal = Vector2(-1, 0)
 distance = -3000.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5jryn"]
-distance = -3000.0
+distance = -11000.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j3vu4"]
 normal = Vector2(1, 0)
@@ -27,13 +28,18 @@ script = ExtResource("1_d5cpg")
 [node name="biomes" type="Node2D" parent="."]
 z_index = -10
 
-[node name="grass" type="Sprite2D" parent="biomes"]
+[node name="forest" type="Sprite2D" parent="biomes"]
 texture_repeat = 2
 texture = ExtResource("2_xtc31")
 region_enabled = true
 region_rect = Rect2(0, 0, 8000, 8000)
 
-[node name="objects" type="Node2D" parent="."]
+[node name="desert" type="Sprite2D" parent="biomes"]
+texture_repeat = 2
+position = Vector2(0, 8000)
+texture = ExtResource("4_gronf")
+region_enabled = true
+region_rect = Rect2(0, 0, 8000, 8000)
 
 [node name="world_boundaries" type="StaticBody2D" parent="."]
 
